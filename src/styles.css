@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+/* 1. IMPORTANDO A FONTE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* 2. VARIÁVEIS GLOBAIS (:root) */
+:root {
+  --bg-page: #09090b;       /* Fundo Preto Profundo */
+  --bg-card: #18181b;       /* Fundo do Card */
+  --bg-input: #27272a;      /* Fundo do Input */
+  --border-color: #3f3f46;  
+  
+  --primary: #39ff14;       /* Neon Green CASE 2025 */
+  --primary-hover: #2ecc11;
+  --text-white: #ffffff;
+  --text-gray: #a1a1aa;
+  
+  --error: #ef4444;         /* Vermelho de Erro */
+}
+
+/* 3. RESETS GLOBAIS */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-page); /* Aplica o preto no fundo real */
+  color: var(--text-white);
+}
+
+/* Centraliza o App na tela */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,48 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1>Painel de Administrador</h1>
+    <button (click)="carregarLeads()" class="btn-refresh">Atualizar</button>
+    <a href="/" class="btn-voltar">← Voltar para Landing Page</a>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Carregando cadastros...</p>
+  </div>
+
+  <div *ngIf="!loading && leads.length === 0" class="empty">
+    <p>Nenhum cadastro encontrado.</p>
+  </div>
+
+  <table *ngIf="!loading && leads.length > 0" class="leads-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Perfil</th>
+        <th>Empresa</th>
+        <th>Cargo</th>
+        <th>Pergunta</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lead of leads">
+        <td>{{ lead._id?.substring(0, 8) }}...</td>
+        <td>{{ lead.nome }}</td>
+        <td>{{ lead.email }}</td>
+        <td>{{ lead.telefone }}</td>
+        <td>{{ lead.perfil }}</td>
+        <td>{{ lead.empresa || '-' }}</td>
+        <td>{{ lead.cargo || '-' }}</td>
+        <td>{{ lead.perguntaChecagem }}</td>
+        <td>{{ lead.dataCadastro | date:'short' }}</td>
+        <td>
+          <button (click)="deletarLead(lead._id)" class="btn-delete">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

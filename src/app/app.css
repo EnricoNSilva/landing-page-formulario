@@ -1,0 +1,317 @@
+/* src/app/app.css */
+
+/* LAYOUT SPLIT */
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  width: 95vw; /* Usa largura da viewport */
+  height: auto;
+  min-height: 600px;
+  gap: 4rem;
+  align-items: center;
+  margin: auto; /* Garante centralização */
+}
+
+/* LADO ESQUERDO (TEXTO) */
+.left-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.left-content h1 span.highlight {
+  color: var(--primary);
+  display: block;
+}
+
+.left-content p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Badge "CASE 2025" */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  border-radius: 99px;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background: rgba(24, 24, 27, 0.5);
+}
+
+/* CARDS INFORMATIVOS */
+.info-cards {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 100px;
+}
+.info-value { color: var(--primary); font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 4px; }
+.info-label { color: var(--text-gray); font-size: 0.8rem; }
+
+/* LADO DIREITO (FORMULÁRIO CARD) */
+.form-card {
+  background-color: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* STEPPER */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.step-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+  z-index: 0;
+}
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  z-index: 1;
+  position: relative;
+}
+.step-circle.active {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+/* CAMPOS DO FORMULÁRIO */
+.form-header h2 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-white); }
+.form-header p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 2rem; }
+
+.input-group { margin-bottom: 1.25rem; }
+.input-group label { display: block; font-size: 0.9rem; margin-bottom: 0.5rem; color: #fff; }
+.input-group label span { color: var(--error); }
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--bg-input);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-sizing: border-box; /* Garante que padding não estoure */
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #000;
+}
+
+/* ESTADO DE ERRO */
+.input-group.error input, 
+.input-group.error select, 
+.input-group.error textarea {
+  border-color: var(--error);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* BOTÃO */
+button.btn-primary {
+  width: 100%;
+  background-color: var(--primary);
+  color: #000;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+button.btn-primary:hover { background-color: var(--primary-hover); }
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .main-wrapper { grid-template-columns: 1fr; padding: 1rem; gap: 2rem; margin-top: 2rem; }
+  .left-content { text-align: center; }
+  .info-cards { justify-content: center; }
+  .form-card { padding: 1.5rem; }
+}
+
+/* TELA DE SUCESSO */
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 400px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Animação suave de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(57, 255, 20, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--primary);
+}
+
+.success-container h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.success-container p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.success-message-box {
+    background-color: var(--bg-input);
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.success-message-box p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-link {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+    color: var(--primary-hover);
+}
+
+/* LINK ADMIN */
+.admin-link {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.7rem;
+  color: #39ff14;
+  text-decoration: none;
+  opacity: 0.3;
+}
+
+/* CHECKBOXES */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-input {
+  width: auto !important;
+}
+
+/* ERRO GLOBAL */
+.global-error {
+  background: #ef444420;
+  color: #ef4444;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* CONTAINER DE BOTÕES */
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOTÃO SECUNDÁRIO */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.2s;
+  margin-block-start: auto;
+  font-size: 16px;
+  margin: 16px 0 0 0;
+}
+
+.btn-secondary:hover {
+  border-color: #999;
+  color: #ddd;
+}
