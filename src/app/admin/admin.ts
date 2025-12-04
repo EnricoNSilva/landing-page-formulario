@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class AdminComponent implements OnInit {
   leads: any[] = [];
   loading: boolean = true;
-  apiUrl = 'http://localhost:3000/leads';
+  apiUrl = 'https://cadastro-lead-api.vercel.app/leads';
 
   constructor(private http: HttpClient) {}
 

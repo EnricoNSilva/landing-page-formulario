@@ -93,7 +93,7 @@ nextStep() {
   if (hasLocalError) return;
 
   this.loadingStep1 = true; // Ativa loading
-  const urlValidacao = 'http://localhost:3000/leads/validar-etapa1';
+  const urlValidacao = 'https://cadastro-lead-api.vercel.app/validar-etapa-1';
 
   // Apenas os dados da etapa 1
     const payloadEtapa1 = {
@@ -161,7 +161,7 @@ enviarLead() {
     if (hasLocalError) return;
 
     // Envio
-    const url = 'http://localhost:3000/leads'; 
+    const url = 'https://cadastro-lead-api.vercel.app/leads'; 
     this.globalError = ''; 
     this.loadingStep2 = true;
 
