@@ -78,10 +78,20 @@ formatarTelefone(event: any) {
         valor = valor.substring(0, 11);
     }
 
-    // Aplica a formatação
-    if (valor.length > 7) {
+if (valor.length > 10) {
         valor = `(${valor.substring(0, 2)}) ${valor.substring(2, 7)}-${valor.substring(7)}`;
+    } else if (valor.length > 6) {
+        // Se o 3º dígito for '9', tratamos como Celular. Se não, como Fixo.
+        const terceiroDigito = valor.substring(2, 3);
+
+        if (terceiroDigito === '9') {
+            // Tratamento visual de Celular enquanto digita
+            valor = `(${valor.substring(0, 2)}) ${valor.substring(2, 7)}${valor.length > 7 ? '-' : ''}${valor.substring(7)}`;
+        } else {
+            valor = `(${valor.substring(0, 2)}) ${valor.substring(2, 6)}-${valor.substring(6)}`;
+        }
     } else if (valor.length > 2) {
+        // Apenas DDD e começo do número: (11) 1234
         valor = `(${valor.substring(0, 2)}) ${valor.substring(2)}`;
     } else if (valor.length > 0) {
         valor = `(${valor}`;
