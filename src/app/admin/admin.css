@@ -4,7 +4,14 @@
   padding: 2rem;
   background: #09090b;
   color: #fff;
-  min-height: 100vh;
+  height: 100vh;
+  /* Mágica do Flexbox para organizar o layout verticalmente */
+  display: flex;
+  flex-direction: column;
+  
+  /* Garante que o padding não estoure o tamanho */
+  box-sizing: border-box;
+  overflow: hidden; /* PROIBIDO rolar a página principal */
 }
 
 .admin-header {
@@ -13,6 +20,7 @@
   align-items: center;
   margin-bottom: 2rem;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .admin-header h1 {
@@ -98,10 +106,13 @@
 }
 
 .table-resposive {
+  flex-grow: 1;
+  overflow: auto;
   width: 100%;
   overflow-x: auto;
   background: #18181b;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   margin-top: 1rem;
+  position: relative;
 }
