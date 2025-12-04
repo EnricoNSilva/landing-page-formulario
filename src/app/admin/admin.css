@@ -96,3 +96,12 @@
   .leads-table { font-size: 0.85rem; }
   .leads-table th, .leads-table td { padding: 8px; }
 }
+
+.table-resposive {
+  width: 100%;
+  overflow-x: auto;
+  background: #18181b;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
+}

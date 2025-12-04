@@ -12,37 +12,38 @@
   <div *ngIf="!loading && leads.length === 0" class="empty">
     <p>Nenhum cadastro encontrado.</p>
   </div>
-
-  <table *ngIf="!loading && leads.length > 0" class="leads-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Perfil</th>
-        <th>Empresa</th>
-        <th>Cargo</th>
-        <th>Pergunta</th>
-        <th>Data</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let lead of leads">
-        <td>{{ lead._id?.substring(0, 8) }}...</td>
-        <td>{{ lead.nome }}</td>
-        <td>{{ lead.email }}</td>
-        <td>{{ lead.telefone }}</td>
-        <td>{{ lead.perfil }}</td>
-        <td>{{ lead.empresa || '-' }}</td>
-        <td>{{ lead.cargo || '-' }}</td>
-        <td>{{ lead.perguntaChecagem }}</td>
-        <td>{{ lead.dataCadastro | date:'short' }}</td>
-        <td>
-          <button (click)="deletarLead(lead._id)" class="btn-delete">Deletar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="!loading && leads.length > 0" class="table-resposive">
+    <table *ngIf="!loading && leads.length > 0" class="leads-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Perfil</th>
+          <th>Empresa</th>
+          <th>Cargo</th>
+          <th>Pergunta</th>
+          <th>Data</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lead of leads">
+          <td>{{ lead._id?.substring(0, 8) }}...</td>
+          <td>{{ lead.nome }}</td>
+          <td>{{ lead.email }}</td>
+          <td>{{ lead.telefone }}</td>
+          <td>{{ lead.perfil }}</td>
+          <td>{{ lead.empresa || '-' }}</td>
+          <td>{{ lead.cargo || '-' }}</td>
+          <td>{{ lead.perguntaChecagem }}</td>
+          <td>{{ lead.dataCadastro | date:'short' }}</td>
+          <td>
+            <button (click)="deletarLead(lead._id)" class="btn-delete">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
