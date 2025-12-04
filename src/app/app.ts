@@ -92,8 +92,16 @@ nextStep() {
   // Decisão
   if (hasLocalError) return;
 
+  // Validação client-side do formato do telefone para evitar chamadas desnecessárias
+  const telefoneRegex = /^\(?([0-9]{2})\)?\s?9?([0-9]{4})-?([0-9]{4})$/;
+  const telefoneTest = this.lead.telefone ? this.lead.telefone.trim().replace(/\s/g, '') : '';
+  if (!telefoneRegex.test(telefoneTest)) {
+    this.fieldErrors['telefone'] = 'Telefone inválido (insira DDD + número). Ex: 11999999999';
+    return;
+  }
+
   this.loadingStep1 = true; // Ativa loading
-  const urlValidacao = 'https://cadastro-lead-api.vercel.app/validar-etapa-1';
+  const urlValidacao = 'https://cadastro-lead-api.vercel.app/leads/validar-etapa1';
 
   // Apenas os dados da etapa 1
     const payloadEtapa1 = {
