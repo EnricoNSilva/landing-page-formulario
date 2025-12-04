@@ -68,6 +68,30 @@ loadingStep2: boolean = false;
 
 private destroy$ = new Subject<void>();
 
+// Função para formatar telefone em tempo real
+formatarTelefone(event: any) {
+    let input = event.target;
+    let valor = input.value.replace(/\D/g, ''); // Remove tudo que não é número
+
+    // Limita a 11 dígitos (DDD + 9 dígitos)
+    if (valor.length > 11) {
+        valor = valor.substring(0, 11);
+    }
+
+    // Aplica a formatação
+    if (valor.length > 7) {
+        valor = `(${valor.substring(0, 2)}) ${valor.substring(2, 7)}-${valor.substring(7)}`;
+    } else if (valor.length > 2) {
+        valor = `(${valor.substring(0, 2)}) ${valor.substring(2)}`;
+    } else if (valor.length > 0) {
+        valor = `(${valor}`;
+    }
+
+    // valor formatado para o input e para o model
+    input.value = valor;
+    this.lead.telefone = valor;
+}
+
 // Função para avançar para a próxima etapa
 nextStep() {
   this.fieldErrors = {} ;

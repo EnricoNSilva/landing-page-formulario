@@ -83,7 +83,13 @@
 
         <div class="input-group" [class.error]="fieldErrors['telefone']">
           <label>Telefone/WhatsApp <span>*</span></label>
-          <input type="tel" [(ngModel)]="lead.telefone" placeholder="(11) 99999-9999">
+          <input 
+              type="tel" 
+              [(ngModel)]="lead.telefone" 
+              (input)="formatarTelefone($event)" 
+              placeholder="(11) 99999-9999"
+              maxlength="15"
+              [class.error]="fieldErrors.telefone">
           <small class="error-text" *ngIf="fieldErrors['telefone']">{{ fieldErrors['telefone'] }}</small>
         </div>
 
